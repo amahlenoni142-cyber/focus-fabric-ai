@@ -86,6 +86,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: "FlowDesk" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { property: "og:title", content: "FlowDesk — AI Workplace Productivity Assistant" },
+      { name: "twitter:title", content: "FlowDesk — AI Workplace Productivity Assistant" },
+      { name: "description", content: "AI Work Companion automates professional tasks and boosts workplace efficiency." },
+      { property: "og:description", content: "AI Work Companion automates professional tasks and boosts workplace efficiency." },
+      { name: "twitter:description", content: "AI Work Companion automates professional tasks and boosts workplace efficiency." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4a7d93d9-c5b7-4f63-8edf-592b31d35198/id-preview-b17a13a8--52c8d1d5-8289-4c50-bf3a-f548495b5601.lovable.app-1781085615286.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4a7d93d9-c5b7-4f63-8edf-592b31d35198/id-preview-b17a13a8--52c8d1d5-8289-4c50-bf3a-f548495b5601.lovable.app-1781085615286.png" },
     ],
     links: [
       {
