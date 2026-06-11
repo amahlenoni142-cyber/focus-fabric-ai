@@ -3,6 +3,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { useQuery } from "@tanstack/react-query";
 import { ThreadSidebar } from "@/components/chat/thread-sidebar";
 import { ChatWindow } from "@/components/chat/chat-window";
+import { AppShell } from "@/components/app-shell";
 import { getThreadMessages } from "@/lib/threads.functions";
 
 export const Route = createFileRoute("/_authenticated/chat/$threadId")({
@@ -30,18 +31,22 @@ function ChatThreadPage() {
 
   if (isLoading) {
     return (
-      <div className="flex h-screen">
-        <ThreadSidebar />
-        <div className="flex-1" />
-      </div>
+      <AppShell>
+        <div className="flex h-full">
+          <ThreadSidebar />
+          <div className="flex-1" />
+        </div>
+      </AppShell>
     );
   }
   if (!data || !data.thread) throw notFound();
 
   return (
-    <div className="flex h-screen">
-      <ThreadSidebar />
-      <ChatWindow threadId={threadId} initialMessages={data.messages} />
-    </div>
+    <AppShell>
+      <div className="flex h-full">
+        <ThreadSidebar />
+        <ChatWindow threadId={threadId} initialMessages={data.messages} />
+      </div>
+    </AppShell>
   );
 }
