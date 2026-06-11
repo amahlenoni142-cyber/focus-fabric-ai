@@ -14,7 +14,12 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedChatIndexRouteImport } from './routes/_authenticated/chat.index'
+import { Route as AuthenticatedToolsTasksRouteImport } from './routes/_authenticated/tools.tasks'
+import { Route as AuthenticatedToolsResearchRouteImport } from './routes/_authenticated/tools.research'
+import { Route as AuthenticatedToolsMeetingsRouteImport } from './routes/_authenticated/tools.meetings'
+import { Route as AuthenticatedToolsEmailRouteImport } from './routes/_authenticated/tools.email'
 import { Route as AuthenticatedChatThreadIdRouteImport } from './routes/_authenticated/chat.$threadId'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -41,9 +46,36 @@ const ApiChatRoute = ApiChatRouteImport.update({
   path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedChatIndexRoute = AuthenticatedChatIndexRouteImport.update({
   id: '/chat/',
   path: '/chat/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedToolsTasksRoute = AuthenticatedToolsTasksRouteImport.update({
+  id: '/tools/tasks',
+  path: '/tools/tasks',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedToolsResearchRoute =
+  AuthenticatedToolsResearchRouteImport.update({
+    id: '/tools/research',
+    path: '/tools/research',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedToolsMeetingsRoute =
+  AuthenticatedToolsMeetingsRouteImport.update({
+    id: '/tools/meetings',
+    path: '/tools/meetings',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedToolsEmailRoute = AuthenticatedToolsEmailRouteImport.update({
+  id: '/tools/email',
+  path: '/tools/email',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedChatThreadIdRoute =
@@ -57,16 +89,26 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
   '/api/chat': typeof ApiChatRoute
   '/chat/$threadId': typeof AuthenticatedChatThreadIdRoute
+  '/tools/email': typeof AuthenticatedToolsEmailRoute
+  '/tools/meetings': typeof AuthenticatedToolsMeetingsRoute
+  '/tools/research': typeof AuthenticatedToolsResearchRoute
+  '/tools/tasks': typeof AuthenticatedToolsTasksRoute
   '/chat/': typeof AuthenticatedChatIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
   '/api/chat': typeof ApiChatRoute
   '/chat/$threadId': typeof AuthenticatedChatThreadIdRoute
+  '/tools/email': typeof AuthenticatedToolsEmailRoute
+  '/tools/meetings': typeof AuthenticatedToolsMeetingsRoute
+  '/tools/research': typeof AuthenticatedToolsResearchRoute
+  '/tools/tasks': typeof AuthenticatedToolsTasksRoute
   '/chat': typeof AuthenticatedChatIndexRoute
 }
 export interface FileRoutesById {
@@ -75,8 +117,13 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/api/chat': typeof ApiChatRoute
   '/_authenticated/chat/$threadId': typeof AuthenticatedChatThreadIdRoute
+  '/_authenticated/tools/email': typeof AuthenticatedToolsEmailRoute
+  '/_authenticated/tools/meetings': typeof AuthenticatedToolsMeetingsRoute
+  '/_authenticated/tools/research': typeof AuthenticatedToolsResearchRoute
+  '/_authenticated/tools/tasks': typeof AuthenticatedToolsTasksRoute
   '/_authenticated/chat/': typeof AuthenticatedChatIndexRoute
 }
 export interface FileRouteTypes {
@@ -85,19 +132,40 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/sitemap.xml'
+    | '/dashboard'
     | '/api/chat'
     | '/chat/$threadId'
+    | '/tools/email'
+    | '/tools/meetings'
+    | '/tools/research'
+    | '/tools/tasks'
     | '/chat/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/sitemap.xml' | '/api/chat' | '/chat/$threadId' | '/chat'
+  to:
+    | '/'
+    | '/auth'
+    | '/sitemap.xml'
+    | '/dashboard'
+    | '/api/chat'
+    | '/chat/$threadId'
+    | '/tools/email'
+    | '/tools/meetings'
+    | '/tools/research'
+    | '/tools/tasks'
+    | '/chat'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/auth'
     | '/sitemap.xml'
+    | '/_authenticated/dashboard'
     | '/api/chat'
     | '/_authenticated/chat/$threadId'
+    | '/_authenticated/tools/email'
+    | '/_authenticated/tools/meetings'
+    | '/_authenticated/tools/research'
+    | '/_authenticated/tools/tasks'
     | '/_authenticated/chat/'
   fileRoutesById: FileRoutesById
 }
@@ -146,11 +214,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/chat/': {
       id: '/_authenticated/chat/'
       path: '/chat'
       fullPath: '/chat/'
       preLoaderRoute: typeof AuthenticatedChatIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/tools/tasks': {
+      id: '/_authenticated/tools/tasks'
+      path: '/tools/tasks'
+      fullPath: '/tools/tasks'
+      preLoaderRoute: typeof AuthenticatedToolsTasksRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/tools/research': {
+      id: '/_authenticated/tools/research'
+      path: '/tools/research'
+      fullPath: '/tools/research'
+      preLoaderRoute: typeof AuthenticatedToolsResearchRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/tools/meetings': {
+      id: '/_authenticated/tools/meetings'
+      path: '/tools/meetings'
+      fullPath: '/tools/meetings'
+      preLoaderRoute: typeof AuthenticatedToolsMeetingsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/tools/email': {
+      id: '/_authenticated/tools/email'
+      path: '/tools/email'
+      fullPath: '/tools/email'
+      preLoaderRoute: typeof AuthenticatedToolsEmailRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/chat/$threadId': {
@@ -164,12 +267,22 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedChatThreadIdRoute: typeof AuthenticatedChatThreadIdRoute
+  AuthenticatedToolsEmailRoute: typeof AuthenticatedToolsEmailRoute
+  AuthenticatedToolsMeetingsRoute: typeof AuthenticatedToolsMeetingsRoute
+  AuthenticatedToolsResearchRoute: typeof AuthenticatedToolsResearchRoute
+  AuthenticatedToolsTasksRoute: typeof AuthenticatedToolsTasksRoute
   AuthenticatedChatIndexRoute: typeof AuthenticatedChatIndexRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedChatThreadIdRoute: AuthenticatedChatThreadIdRoute,
+  AuthenticatedToolsEmailRoute: AuthenticatedToolsEmailRoute,
+  AuthenticatedToolsMeetingsRoute: AuthenticatedToolsMeetingsRoute,
+  AuthenticatedToolsResearchRoute: AuthenticatedToolsResearchRoute,
+  AuthenticatedToolsTasksRoute: AuthenticatedToolsTasksRoute,
   AuthenticatedChatIndexRoute: AuthenticatedChatIndexRoute,
 }
 
