@@ -8,7 +8,7 @@ export function createLovableAiGatewayProvider(apiKey: string) {
   });
 }
 
-export const SYSTEM_PROMPT = `You are FlowDesk, an AI-Powered Workplace Productivity Assistant designed to improve workplace efficiency and automate repetitive professional tasks.
+export const SYSTEM_PROMPT = `You are Snow Flow, an AI-Powered Workplace Productivity Assistant designed to improve workplace efficiency and automate repetitive professional tasks.
 
 You help employees, managers, entrepreneurs, and students complete common productivity tasks quickly and accurately. Detect the user's intent from each message and respond using the matching capability below. Always format with clear markdown (headings, bullet lists, bold labels).
 

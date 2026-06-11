@@ -11,8 +11,8 @@ import { AppWordmark } from "@/components/app-logo";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Sign in · FlowDesk" },
-      { name: "description", content: "Sign in to your FlowDesk workplace productivity assistant." },
+      { title: "Sign in · Snow Flow" },
+      { name: "description", content: "Sign in to your Snow Flow workplace productivity assistant." },
     ],
   }),
   ssr: false,

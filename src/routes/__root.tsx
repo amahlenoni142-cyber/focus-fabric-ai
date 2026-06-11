@@ -77,17 +77,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "FlowDesk — AI Workplace Productivity Assistant" },
+      { title: "Snow Flow — AI Workplace Productivity Assistant" },
       {
         name: "description",
         content:
           "Draft emails, summarize meetings, plan your day, and research topics with an AI assistant built for work.",
       },
-      { name: "author", content: "FlowDesk" },
+      { name: "author", content: "Snow Flow" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { property: "og:title", content: "FlowDesk — AI Workplace Productivity Assistant" },
-      { name: "twitter:title", content: "FlowDesk — AI Workplace Productivity Assistant" },
+      { property: "og:title", content: "Snow Flow — AI Workplace Productivity Assistant" },
+      { name: "twitter:title", content: "Snow Flow — AI Workplace Productivity Assistant" },
       { name: "description", content: "AI Work Companion automates professional tasks and boosts workplace efficiency." },
       { property: "og:description", content: "AI Work Companion automates professional tasks and boosts workplace efficiency." },
       { name: "twitter:description", content: "AI Work Companion automates professional tasks and boosts workplace efficiency." },
