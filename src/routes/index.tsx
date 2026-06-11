@@ -5,13 +5,13 @@ import { AppWordmark } from "@/components/app-logo";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "FlowDesk — AI Workplace Productivity Assistant" },
+      { title: "Snow Flow — AI Workplace Productivity Assistant" },
       {
         name: "description",
         content:
           "Draft emails, summarize meetings, plan your day, and research topics with an AI assistant built for work.",
       },
-      { property: "og:title", content: "FlowDesk — AI Workplace Productivity Assistant" },
+      { property: "og:title", content: "Snow Flow — AI Workplace Productivity Assistant" },
       {
         property: "og:description",
         content:
@@ -53,7 +53,7 @@ function Landing() {
             Get more done at work, in less time.
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-pretty text-base text-muted-foreground sm:text-lg">
-            FlowDesk drafts emails, summarizes meetings, plans your day, and researches anything — all in one clean chat.
+            Snow Flow drafts emails, summarizes meetings, plans your day, and researches anything — all in one clean chat.
           </p>
           <div className="mt-9 flex items-center justify-center gap-3">
             <Link
@@ -80,7 +80,7 @@ function Landing() {
 
       <footer className="border-t border-border">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 text-xs text-muted-foreground">
-          <span>© {new Date().getFullYear()} FlowDesk</span>
+          <span>© {new Date().getFullYear()} Snow Flow</span>
           <span>AI-generated content. Review before professional use.</span>
         </div>
       </footer>
