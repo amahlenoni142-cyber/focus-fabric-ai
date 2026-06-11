@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { useQueryClient } from "@tanstack/react-query";
 import { ThreadSidebar } from "@/components/chat/thread-sidebar";
+import { AppShell } from "@/components/app-shell";
 import { listThreads, createThread } from "@/lib/threads.functions";
 
 export const Route = createFileRoute("/_authenticated/chat/")({
@@ -32,11 +33,13 @@ function ChatIndex() {
   }, [list, create, navigate, qc]);
 
   return (
-    <div className="flex h-screen">
-      <ThreadSidebar />
-      <div className="flex flex-1 items-center justify-center text-sm text-muted-foreground">
-        Opening your workspace…
+    <AppShell>
+      <div className="flex h-full">
+        <ThreadSidebar />
+        <div className="flex flex-1 items-center justify-center text-sm text-muted-foreground">
+          Opening your workspace…
+        </div>
       </div>
-    </div>
+    </AppShell>
   );
 }
